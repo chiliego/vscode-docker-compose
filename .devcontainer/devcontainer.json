@@ -8,6 +8,7 @@
 	
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
+		"terminal.integrated.shell.linux": "/bin/zsh",
 		"java.home": "/docker-java-home"
 	},
 	
