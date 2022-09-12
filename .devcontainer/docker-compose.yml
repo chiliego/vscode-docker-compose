@@ -6,6 +6,7 @@ volumes:
     null
 services:
   app:
+    container_name: javadev
     build:
       context: .
       dockerfile: Dockerfile
@@ -13,9 +14,9 @@ services:
         # Update 'VARIANT' to pick an version of Java: 11, 17.
         # Append -bullseye or -buster to pin to an OS version.
         # Use -bullseye variants on local arm64/Apple Silicon.
-        VARIANT: 11-bullseye
+        VARIANT: "11"
         # Options
-        INSTALL_MAVEN: "true"
+        INSTALL_MAVEN: "false"
         MAVEN_VERSION: ""
         INSTALL_GRADLE: "true"
         GRADLE_VERSION: ""
@@ -42,6 +43,7 @@ services:
     # (Adding the "ports" property to this file will not forward from a Codespace.)
 
   db:
+    container_name: postgresdb
     image: postgres:latest
     restart: unless-stopped
     volumes:
@@ -53,5 +55,3 @@ services:
       POSTGRES_DB: postgres
     # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
-    volumes:
-      - ..:/workspace:cached
